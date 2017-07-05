@@ -14,8 +14,8 @@ dependencies {
     springloaded group: 'org.springframework', name: 'springloaded', version: '1.2.6.RELEASE'
 }
 
-task setJVMArgs << {
-	applicationDefaultJvmArgs = ["-javaagent:"+configurations.springloaded.files[0].getAbsolutePath().replace("\\", "/"), "-noverify"]
+task("setJVMArgs").doLast {
+    applicationDefaultJvmArgs = ["-javaagent:" + configurations.springloaded.files.stream().filter{it.name.contains("spring")}.toArray{new File[1]}[0].getAbsolutePath().replace("\\", "/"), "-noverify"]
 }
 
 eclipse {
