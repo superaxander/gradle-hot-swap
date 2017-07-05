@@ -18,6 +18,5 @@ idea {
         outputDir = file("$buildDir/classes/main/")
     }
 }
-run.dependsOn setJVMArgs
 run.dependsOn eclipseClasspath
 run.dependsOn ideaModule
